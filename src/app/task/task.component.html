@@ -1,0 +1,98 @@
+<div >
+    <form  (submit) = "postNewTask($event)">
+        <div>
+            <label>Title:</label>
+            <input type="text" name="addTitle" [ngModel] = "title" >
+        </div>
+        <div>
+            <label>Description:</label>
+            <input type="text" name="addDesc" [ngModel] = "description">
+        </div>
+        <div>
+            <button type="submit">
+                New task
+            </button>
+        </div>
+        <div>
+            Values: {{title}} {{description}}
+        </div>
+    </form>
+    <h3>
+        Task List
+    </h3>
+    <div *ngFor = "let task of allTasks">
+        <div>
+            {{task.title}}
+        </div>
+        <div>
+            <form class="" action="" (submit) = "taskInfo($event)" >
+                <input type="hidden" value="{{task.title}}">
+                <button type="submit">
+                    Show more
+                </button>
+            </form>
+            <form class="" action="" (submit) = "taskInfo($event)" >
+                <input type="hidden" value="{{task.title}}">
+                <button type="submit" class="">
+                    Edit
+                </button>
+            </form>
+            <form class="" action="" (submit) = "deleteTask($event)" >
+                <input id="title" type="hidden" value="{{task.title}}">
+                <button type="submit" class="">
+                    Delete
+                </button>
+            </form>
+        </div> 
+    </div>
+</div>
+<div *ngIf="task2.title">
+    <div>
+        <div>
+            Description: {{task2.description}}
+        </div>
+        <div>
+            Status: {{task2.completed}}
+        </div>
+    </div>
+    <div *ngIf="task2.title">
+        <h1>
+            Edit
+        </h1>
+        <div>
+            <form (submit) = "editTask($event)">
+                <input type="hidden" value="{{task2.title}}">
+                <div>
+                    <label>
+                        Title:
+                    </label>
+                    <input type="text" name="editTitle" [(ngModel)] = "newTitle" >
+                </div>
+                <div>
+                    <label>
+                        Description:
+                    </label>
+                    <input type="text" name="editDesc" [(ngModel)] = "newDescription" >
+                </div>
+                <div>
+                    <div>
+                        <label for="Yes">Yes</label>
+                        <input type="radio" name="completed" [(ngModel)]="completed"  value="true">
+                        <label for="no">No</label>
+                        <input type="radio" name="completed" [(ngModel)]="completed"value="false">
+                    </div>
+                </div>
+                <div>
+                    <button type="submit">
+                        Edit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+    
